@@ -1,0 +1,13 @@
+<ul>
+  <li *ngFor="let item of Items| orderBy:name">
+    <input type="checkbox" class="chControl" checked="item.isOpen"
+           *ngIf="item.type==='folder' && item.children!=='undefined' && item.children.length!==0">
+    <span title="{{item.type}}">
+			            {{item.name}}
+		                </span>
+    <span *ngIf="item.children!==undefined">({{item.children.length}})</span>
+    <div class="isOpen">
+      <tree-view [Items]="item.children" *ngIf="item.children!=='undefined'"></tree-view>
+    </div>
+  </li>
+</ul>
